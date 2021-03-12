@@ -1,8 +1,8 @@
 # Redis @ OKE
 
-## Objectivo
+## Objetivo
 
-O obvjetivo desse how-to é demonstrar a instalçao do Redis dentro de um cluster kubernetes. Através desse empacotamento é possível determinar o número de PODs para as replicas e redis secundário, além de personalizar senha ao secret e determinar um pool específico para instalação. 
+O objetivo desse how-to é demonstrar a instalçao do Redis dentro de um cluster kubernetes. Através desse empacotamento é possível determinar o número de PODs para as replicas e redis secundário, além de personalizar senha ao secret e determinar um pool específico para instalação. 
 
 ## Pré-requisito
 
@@ -31,6 +31,7 @@ $ helm repo add redis-oke 'https://raw.githubusercontent.com/fcostabr78/oke_helm
 
 ```
 $ helm repo update
+```
 
 ```
 $ k create ns redis
