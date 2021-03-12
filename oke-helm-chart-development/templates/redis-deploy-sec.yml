@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slave-deployment
+  labels:
+    name: redis-slave
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      name: redis-slave
+  template:
+    metadata:
+      labels:
+        name: redis-slave
+    spec:     
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  name: redis-master
+              topologyKey: kubernetes.io/hostname
+      nodeSelector:
+        pool: {{ .Values.deployment.node_selector }}
+      subdomain: replica
+      containers:
+        - name: redis
+          env:
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: redis-secret
+                key: redis-password
+          image: {{ .Values.deployment.image }}:{{ .Values.deployment.version }}
+          ports:
+            - containerPort: {{ .Values.deployment.containerPortSec }}
+          command:
+            - "redis-server"
+          args:
+            - "--slaveof"
+            - "master.redis.svc.cluster.local"
+            - "{{ .Values.deployment.containerPortSec }}"
+            - --requirepass
+            - $(PASSWORD)
+            - --masterauth
+            - $(PASSWORD)
+            - "--protected-mode"
+            - "no"

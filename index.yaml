@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  oke-helm-chart-development:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2021-03-11T23:20:57.359897366-03:00"
+    description: A Helm chart for Deploy Kubernetes Resources in Development Environment
+    digest: 9651f67e71c65febe731a9b0de642febae3c63d5b5b4d75ebd7229030f72aad1
+    name: oke-helm-chart-development
+    urls:
+    - oke-helm-chart-development-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-03-11T23:20:57.359622081-03:00"
