@@ -2,12 +2,14 @@
 
 ## Objetivo
 
-O objetivo desse how-to é demonstrar a instalçao do Redis dentro de um cluster kubernetes. Através desse empacotamento é possível determinar o número de PODs para as replicas e redis secundário, além de personalizar senha ao secret e determinar um pool específico para instalação. 
+O objetivo desse how-to é demonstrar a instalação do Redis dentro de um cluster kubernetes. Através desse empacotamento é possível determinar o número de PODs para as replicas e redis secundário, personalizar senha ao secret e determinar um pool específico para instalação. 
 
 ## Pré-requisito
 
 1. Cluster Kubernetes provisiondo no Oracle Cloud Infrastruture <br>
    https://docs.oracle.com/pt-br/iaas/Content/ContEng/Concepts/contengoverview.htm
+
+1.1 OCI CLI instalado e kubeconfig criado localmente
 
 2. redis-cli instalado localmente
 
@@ -16,6 +18,7 @@ O objetivo desse how-to é demonstrar a instalçao do Redis dentro de um cluster
 
 ## Etapas
 
+Abra o Terminal e ingresse os seguintes comandos:
 
 ```
 $ alias k=kubectl
@@ -26,7 +29,7 @@ $ helm init --service-account tiller --history-max 200 --upgrade
 ```
 
 ```
-$ helm repo add redis-oke 'https://raw.githubusercontent.com/fcostabr78/oke_helm_redis/master/'
+$ helm repo add redis-oke 'https://raw.githubusercontent.com/fcostabr78/oke_helm_redis/master/' 
 ```
 
 ```
@@ -38,8 +41,10 @@ $ k create ns redis
 ```
 
 ```
-$ helm install --namespace redis redis-oke/oke-helm-redis 
+$ helm install --namespace redis redis-oke/oke-helm-redis --set deployment.password=<senha>
 ```
+
+Será apresentado o status seguinte com comando acima:
 
 <table>
     <tbody>
@@ -49,6 +54,25 @@ $ helm install --namespace redis redis-oke/oke-helm-redis
     </tbody>
 </table>
 
+Após o provisionamento e atribuição automática dos IP externos aos loadbalancer master e slave, basta fazer um port-forward ao POD que incia com redisinsight.
 
+```
+$ kubectl port-forward redisinsight-6b5f9bd96-4kmgg 8001:8001 -n redis
+```
+
+Abra o navegador e ingresse com http://localhost:8001. Na configuração será solicitado o host (adicione o IP externo do LB referente ao master), a senha (ingressada acima na instalação), porta e nome. Se tudo seguir correto, a seguinte tela será apresentada:
+
+
+<table>
+    <tbody>
+        <tr>
+        <th><img align="left" width="600" src="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idsvh8rxij5e/b/imagens_git/o/Screenshot%20from%202021-03-12%2001-39-45.png"/></th>
+        </tr>
+    </tbody>
+</table>
+
+
+
+:heartpulse:
 
 
