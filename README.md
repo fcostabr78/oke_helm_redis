@@ -1,4 +1,21 @@
-# oke_helm_redis
+# Redis @ OKE
+
+## Objectivo
+
+O obvjetivo desse how-to é demonstrar a instalçao do Redis dentro de um cluster kubernetes. Através desse empacotamento é possível determinar o número de PODs para as replicas e redis secundário, além de personalizar senha ao secret e determinar um pool específico para instalação. 
+
+## Pré-requisito
+
+1. Cluster Kubernetes provisiondo no Oracle Cloud Infrastruture <br>
+   https://docs.oracle.com/pt-br/iaas/Content/ContEng/Concepts/contengoverview.htm
+
+2. redis-cli instalado localmente
+
+3. helm instalado localmente
+
+
+## Etapas
+
 
 ```
 $ alias k=kubectl
