@@ -3,7 +3,7 @@ entries:
   oke-helm-chart-development:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2021-03-12T01:06:17.586253436-03:00"
+    created: "2021-03-12T01:23:55.849929971-03:00"
     description: A Helm chart for Deploy Kubernetes Resources in Development Environment
     digest: 9651f67e71c65febe731a9b0de642febae3c63d5b5b4d75ebd7229030f72aad1
     name: oke-helm-chart-development
@@ -13,11 +13,11 @@ entries:
   oke-helm-redis:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2021-03-12T01:06:17.586472875-03:00"
+    created: "2021-03-12T01:23:55.850159255-03:00"
     description: A Helm chart for Deploy Kubernetes Resources in Development Environment
-    digest: 074a422aef4268db18e70665f6e83f87cfd44886117c8f56e2914556c3456e95
+    digest: 4e5f61bf58e3ef204b4cb5a924e8ad0d3a021d8becbf131194013186ba97e5e8
     name: oke-helm-redis
     urls:
     - oke-helm-redis-0.1.0.tgz
     version: 0.1.0
-generated: "2021-03-12T01:06:17.58593058-03:00"
+generated: "2021-03-12T01:23:55.849626343-03:00"
