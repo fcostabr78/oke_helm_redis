@@ -40,3 +40,15 @@ $ k create ns redis
 ```
 $ helm install --namespace redis redis-oke/oke-helm-redis 
 ```
+
+<table>
+    <tbody>
+        <tr>
+        <th><img align="left" width="600" src="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idsvh8rxij5e/b/imagens_git/o/Screenshot%20from%202021-03-12%2001-13-05.png"/></th>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
