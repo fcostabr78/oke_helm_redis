@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redisinsight
+  labels:
+    app: redisinsight
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: redisinsight 
+  template: 
+    metadata:
+      labels:
+        app: redisinsight 
+    spec:
+      nodeSelector:
+        pool: {{ .Values.deployment.node_selector }}
+      containers:
+      - name:  redisinsight 
+        image: {{ .Values.deployment.managRepo }}/{{ .Values.deployment.managImage }}:{{ .Values.deployment.managVersion }}
+        imagePullPolicy: IfNotPresent 
+        env:
+          - name: REDISINSIGHT_HOST
+            value: "0.0.0.0"
+          - name: REDISINSIGHT_PORT
+            value: "8001"
+        volumeMounts:
+        - name: db 
+          mountPath: /db
+        ports:
+        - containerPort: 8001 
+          protocol: TCP
+        livenessProbe:
+           httpGet:
+              path : /healthcheck/ 
+              port: 8001 
+           initialDelaySeconds: 5 
+           periodSeconds: 5 
+           failureThreshold: 1 
+      volumes:
+      - name: db
+        emptyDir: {}

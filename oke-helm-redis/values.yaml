@@ -1,11 +1,14 @@
 deployment:
-  replicas: 1
+  replicas: 2
   image: redis
   version: 3.2.0-alpine
+  managImage: redisinsight
+  managVersion: 1.7.0
+  managRepo: redislabs
   containerPort: 63790
   containerPortSec: 6379
   targetPort: 6379
   port: 6379
   node_selector: support_1
-  password: redev0r@cl3
+  password: teste123
 
