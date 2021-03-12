@@ -2,14 +2,14 @@
 
 ## Objetivo
 
-O objetivo desse how-to é demonstrar a instalçao do Redis dentro de um cluster kubernetes. Através desse empacotamento é possível determinar o número de PODs para as replicas e redis secundário, personalizar senha ao secret e determinar um pool específico para instalação. 
+O objetivo desse how-to é demonstrar a instalação do Redis dentro de um cluster kubernetes. Através desse empacotamento é possível determinar o número de PODs para as replicas e redis secundário, personalizar senha ao secret e determinar um pool específico para instalação. 
 
 ## Pré-requisito
 
 1. Cluster Kubernetes provisiondo no Oracle Cloud Infrastruture <br>
    https://docs.oracle.com/pt-br/iaas/Content/ContEng/Concepts/contengoverview.htm
 
-1.1 OCI CLI instaldo e kubeconfig criado localmente
+1.1 OCI CLI instalado e kubeconfig criado localmente
 
 2. redis-cli instalado localmente
 
@@ -73,7 +73,6 @@ Abra o navegador e ingresse com http://localhost:8001. Na configuração será s
 
 
 
-
-h
+:heartpulse:
 
 
