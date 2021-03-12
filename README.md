@@ -26,7 +26,7 @@ $ helm init --service-account tiller --history-max 200 --upgrade
 ```
 
 ```
-$ helm repo add redis-oke 'https://raw.githubusercontent.com/fcostabr78/oke_helm_redis/master/' --set deployment.password=<senha>
+$ helm repo add redis-oke 'https://raw.githubusercontent.com/fcostabr78/oke_helm_redis/master/' 
 ```
 
 ```
@@ -38,7 +38,7 @@ $ k create ns redis
 ```
 
 ```
-$ helm install --namespace redis redis-oke/oke-helm-redis 
+$ helm install --namespace redis redis-oke/oke-helm-redis --set deployment.password=<senha>
 ```
 
 <table>
