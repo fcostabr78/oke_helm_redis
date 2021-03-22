@@ -37,7 +37,7 @@ def doDeploy(context, confirmed) {
                 Utils.markStageSkippedForConditional(STAGE_NAME)
             } else {
               createNamespace(context, "redis") 
-              install(context) 
+              install(context, "redis") 
             }                    
         }
         catch(Exception e) {
@@ -53,11 +53,11 @@ def createNamespace(context, name)
   }
 }
 
-def install(context){
+def install(context, name){
   stage('Install Redis') {
         sh ". /opt/ciee/env/$context && helm init --service-account tiller --history-max 200 --upgrade"
         sh ". /opt/ciee/env/$context && helm repo add redis-oke 'https://raw.githubusercontent.com/fcostabr78/oke_helm_redis/master/'"
         sh ". /opt/ciee/env/$context && helm repo update"
-        sh ". /opt/ciee/env/$context && helm install --namespace redis redis-oke/oke-helm-redis --set deployment.password=${PASSWORD}"
+        sh ". /opt/ciee/env/$context && helm install --namespace $name redis-oke/oke-helm-redis --set deployment.password=${PASSWORD}"
   }
 }
