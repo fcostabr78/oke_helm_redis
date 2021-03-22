@@ -47,7 +47,7 @@ def doDeploy(context, confirmed) {
     }
 }
 
-def createNamespace(context, name)
+def createNamespace(context, name){
   stage('Create Namespace') {
     sh ". /opt/ciee/env/$context && kubectl create ns $name"
   }
