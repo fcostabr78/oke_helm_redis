@@ -41,7 +41,7 @@ def doDeploy(context, confirmed) {
             }                    
         }
         catch(Exception e) {
-            print "REDIS FOUND"
+            print "Error to continue"
         }            
       }
     }
